@@ -1,23 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./App.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import ReportOptions from "./components/ReportOptions";
+import Report from "./components/Report";
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(() => {
+    const savedMode = localStorage.getItem("darkMode");
+    return savedMode ? JSON.parse(savedMode) : false;
+  });
+
+  const [selectedReport, setSelectedReport] = useState(null);
+
+  const toggleDarkMode = () => {
+    const newMode = !isDarkMode;
+    setIsDarkMode(newMode);
+    localStorage.setItem("darkMode", JSON.stringify(newMode));
+  };
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", isDarkMode);
+  }, [isDarkMode]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App flex flex-col h-screen">
+      <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+      <main className="flex-grow mt-12 p-4 bg-teal-50 dark:bg-slate-800 dark:text-secondary-100">
+        {selectedReport ? (
+          <Report
+            title={selectedReport}
+            goBack={() => setSelectedReport(null)}
+          />
+        ) : (
+          <ReportOptions onSelectReport={setSelectedReport} />
+        )}
+      </main>
+      <Footer isDarkMode={isDarkMode} />
     </div>
   );
 }
