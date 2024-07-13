@@ -70,7 +70,7 @@ const Report = ({ title, goBack }) => {
           <img src={image} alt="Uploaded" className="h-64 w-128" />
         ) : (
           <div className="h-64 w-128 flex items-center justify-center">
-            <p className="text-gray-500">No image uploaded</p>
+            <p className="text-gray-500">🚗 אני מחכה לתמונה של הרכב</p>
           </div>
         )}
 
