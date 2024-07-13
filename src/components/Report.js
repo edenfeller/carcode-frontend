@@ -38,12 +38,12 @@ const Report = ({ title, goBack }) => {
     });
     setTimeout(() => {
       setShowConfetti(false);
-      goBack();
+      goBack('thankYou');
     }, 5000);
   };
 
   return (
-    <div className="flex flex-col h-full mt-4">
+    <div className="flex flex-col h-85 mt-4">
       {showConfetti && <Confetti width={window.innerWidth} height={window.innerHeight} />}
       <div className="mx-auto">
         <h1 className="text-4xl font-bold">דיווח על {titlesMap[title]}</h1>
@@ -83,8 +83,8 @@ const Report = ({ title, goBack }) => {
           </button>
         )}
       </div>
-      <div className="mt-8 mb-16 flex justify-center">
-        <button className="header-icon" onClick={goBack}>
+      <div className="mb-48 flex justify-center">
+        <button className="header-icon" onClick={() => goBack()}>
           <Undo2 size="28" />
         </button>
       </div>

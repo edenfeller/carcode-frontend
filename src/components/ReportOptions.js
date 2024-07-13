@@ -9,7 +9,7 @@ const ReportOptions = ({onSelectReport}) => {
           תודה שבחרת לדווח לבעלי הרכב 🙏 אנחנו יודעים כמה זה חשוב להם
         </p>
         <p className="text-lg">
-          הרכב שסרקת הוא סקודיה אוקטבציה בצבע לבן
+          הרכב שסרקת הוא סקודיה אוקטביה בצבע לבן
         </p>
       </div>
       <div className="mt-8 flex-grow">

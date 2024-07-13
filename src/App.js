@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ReportOptions from "./components/ReportOptions";
 import Report from "./components/Report";
+import ThankYou from "./components/ThanksYou";
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -28,10 +29,14 @@ function App() {
       <Header isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       <main className="flex-grow mt-12 p-4 bg-teal-50 dark:bg-slate-800 dark:text-secondary-100">
         {selectedReport ? (
-          <Report
-            title={selectedReport}
-            goBack={() => setSelectedReport(null)}
-          />
+          selectedReport === "thankYou" ? (
+            <ThankYou />
+          ) : (
+            <Report
+              title={selectedReport}
+              goBack={(page) => setSelectedReport(page)}
+            />
+          )
         ) : (
           <ReportOptions onSelectReport={setSelectedReport} />
         )}
