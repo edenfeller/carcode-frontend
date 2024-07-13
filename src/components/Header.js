@@ -1,5 +1,5 @@
 import React from "react";
-import { Moon, Sun, User, Search, Info } from "lucide-react";
+import { Moon, Sun, User, Info } from "lucide-react";
 
 const Header = ({ isDarkMode, toggleDarkMode }) => {
   return (
